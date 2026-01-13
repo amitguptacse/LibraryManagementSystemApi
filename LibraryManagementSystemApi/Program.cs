@@ -4,10 +4,8 @@
 global using LibraryManagementSystemApi.Data;
 global using LibraryManagementSystemApi.Models.DTOs;
 global using LibraryManagementSystemApi.Models.Entites;
-global using LibraryManagementSystemApi.Repositories;
 global using Microsoft.EntityFrameworkCore;
-global using System.ComponentModel.DataAnnotations;
-global using System.ComponentModel.DataAnnotations.Schema;
+global using LibraryManagementSystemApi.Constants;
 using LibraryManagementSystemApi.Repositories.Implementation;
 using LibraryManagementSystemApi.Repositories.Interfaces;
 using LibraryManagementSystemApi.Services.Implementation;

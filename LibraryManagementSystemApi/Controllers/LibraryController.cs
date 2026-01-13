@@ -21,7 +21,7 @@ namespace LibraryManagementSystemApi.Controllers
                 return BadRequest(ModelState);
 
             await _libraryService.IssueBookAsync(dto);
-            return Ok("Book issued successfully");
+            return Ok(SuccessMessages.BookIssued);
         }
 
         [HttpPost("return")]
@@ -31,7 +31,7 @@ namespace LibraryManagementSystemApi.Controllers
                 return BadRequest(ModelState);
 
             await _libraryService.ReturnBookAsync(dto);
-            return Ok("Book returned successfully");
+            return Ok(SuccessMessages.BookReturned);
         }
 
         [HttpGet("transactions")]

@@ -62,7 +62,7 @@ namespace LibraryManagementSystemApi.Services.Implementation
         public async Task UpdateAsync(int bookId, BookUpdateDto dto)
         {
             var book = await _bookRepository.GetByIdAsync(bookId)
-                       ?? throw new Exception("Book not found");
+                       ?? throw new Exception(ErrorMessages.BookNotFound);
 
             // ❗ Validation: TotalCopies cannot be less than already issued copies
             if (dto.TotalCopies < book.IssuedCopies)
@@ -84,7 +84,7 @@ namespace LibraryManagementSystemApi.Services.Implementation
         public async Task DeleteAsync(int bookId)
         {
             var book = await _bookRepository.GetByIdAsync(bookId);
-            if (book == null) throw new Exception("Book not found");
+            if (book == null) throw new Exception(ErrorMessages.BookNotFound);
 
             await _bookRepository.DeleteAsync(book);
         }

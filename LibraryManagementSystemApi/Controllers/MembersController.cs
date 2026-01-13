@@ -36,7 +36,7 @@ namespace LibraryManagementSystemApi.Controllers
                 return BadRequest(ModelState);
 
             await _memberService.AddAsync(dto);
-            return Ok("Member added successfully");
+            return Ok(SuccessMessages.MemberAdded);
         }
     }
 

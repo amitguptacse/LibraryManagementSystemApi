@@ -24,19 +24,19 @@ namespace LibraryManagementSystemApi.Services.Implementation
         public async Task IssueBookAsync(IssueBookDto dto)
         {
             var book = await _bookRepository.GetByIdAsync(dto.BookId)
-                       ?? throw new Exception("Book not found");
+                       ?? throw new Exception(ErrorMessages.BookNotFound);
 
             var member = await _memberRepository.GetByIdAsync(dto.MemberId)
-                         ?? throw new Exception("Member not found");
+                         ?? throw new Exception(ErrorMessages.MemberNotFound);
 
             if (!member.IsActive)
-                throw new Exception("Inactive member");
+                throw new Exception(ErrorMessages.InactiveMember);
 
             if (book.AvailableCopies <= 0)
-                throw new Exception("Book not available");
+                throw new Exception(ErrorMessages.BookNotAvailable);
 
             if (dto.DueDate.Date < DateTime.UtcNow.Date)
-                throw new Exception("Due date cannot be in the past");
+                throw new Exception(ErrorMessages.InvalidDueDate);
          
 
             book.AvailableCopies--;
@@ -61,7 +61,7 @@ namespace LibraryManagementSystemApi.Services.Implementation
         public async Task ReturnBookAsync(ReturnBookDto dto)
         {
             var transaction = await _transactionRepository.GetByIdAsync(dto.TransactionId)
-                              ?? throw new Exception("Transaction not found");
+                              ?? throw new Exception(ErrorMessages.TransactionNotFound);
 
             if (transaction.Status != "Issued")
                 throw new Exception("Book already returned");

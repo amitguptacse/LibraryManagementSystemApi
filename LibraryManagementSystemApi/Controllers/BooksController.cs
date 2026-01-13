@@ -37,7 +37,7 @@ namespace LibraryManagementSystemApi.Controllers
                 return BadRequest(ModelState);
 
             await _bookService.AddAsync(dto);
-            return Ok("Book added successfully");
+            return Ok(SuccessMessages.BookCreated);
         }
 
         [HttpPut("{id}")]
@@ -47,13 +47,13 @@ namespace LibraryManagementSystemApi.Controllers
                 return BadRequest(ModelState);
 
             await _bookService.UpdateAsync(id, dto);
-            return Ok("Book updated successfully");
+            return Ok(SuccessMessages.BookUpdated);
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             await _bookService.DeleteAsync(id);
-            return Ok("Book deleted successfully");
+            return Ok(SuccessMessages.BookDeleted);
         }
     }
 }
