@@ -5,7 +5,7 @@ LibraryManagementSystemApi is a simple ASP.NET Core Web API built to manage basi
 This project is mainly created for learning and practice purposes, following clean coding and layered architecture.
 
 ## Features
-- Add, update, and view books
+- Add, update, view, and delete books
 - Register library members
 - Issue books to members
 - Return books with return remarks
